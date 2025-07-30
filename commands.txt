@@ -1,0 +1,143 @@
+    1  clear
+    2  ls
+    3  clear
+    4  pwd
+    5  /
+    6  clear
+    7  cd /
+    8  cd home/ubuntu/.ssh/
+    9  ls
+   10  clear
+   11  ssh-keygen -t rsa -b 4096
+   12  ls
+   13  cat id_rsa
+   14  cat id_rsa.pub 
+   15  cd /
+   16  ls
+   17  cd home/ubuntu/
+   18  ls
+   19  mkdir terraform
+   20  ls
+   21  cd terraform/
+   22  vi main.tf
+   23  cat main.tf 
+   24  vi generate_inventory.sh
+   25  vi ping.yml
+   26  cd ../
+   27  mkdir ansible
+   28  cd ansible/
+   29  ls
+   30  mv ../terraform/ping.yml .
+   31  ls
+   32  cat ping.yml 
+   33  vi run_python.yml
+   34  cd ../
+   35  ls
+   36  vi script.py
+   37  ls
+   38  cd terraform/
+   39  terraform init
+   40  sudo snap install terraform
+   41  sudo apt-get update && sudo apt-get install -y gnupg software-properties-common
+   42  wget -O- https://apt.releases.hashicorp.com/gpg | gpg --dearmor | sudo tee /usr/share/keyrings/hashicorp-archive-keyring.gpg > /dev/null
+   43  gpg --no-default-keyring --keyring /usr/share/keyrings/hashicorp-archive-keyring.gpg --fingerprint
+   44  echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] https://apt.releases.hashicorp.com $(grep -oP '(?<=UBUNTU_CODENAME=).*' /etc/os-release || lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/hashicorp.list
+   45  sudo apt update
+   46  sudo apt-get install terraform
+   47  terraform -help
+   48  terraform plan -help
+   49  cls
+   50  terraform init
+   51  terraform apply -auto-approve
+   52  aws configure 
+   53  sudo apt  install awscli
+   54  sudo snap install aws-cli
+   55  curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+   56  unzip awscliv2.zip
+   57  sudo ./aws/install
+   58  curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+   59  ls
+   60  unzip awscliv2.zip
+   61  sudo apt install unzip
+   62  unzip awscliv2.zip
+   63  sudo ./aws/install
+   64  aws --version
+   65  aws configure 
+   66  terraform apply -auto-approve
+   67  vi main.tf 
+   68  terraform apply -auto-approve
+   69  terraform init -upgrade
+   70  terraform apply -auto-approve
+   71  ls
+   72  ./generate_inventory.sh
+   73  chmod 400 generate_inventory.sh 
+   74  ./generate_inventory.sh
+   75  sudo ./generate_inventory.sh
+   76  chmod 700 generate_inventory.sh 
+   77  ./generate_inventory.sh
+   78  ls
+   79  cat ip_list.txt 
+   80  cd ../
+   81  cd ansible/
+   82  ls
+   83  cat inventory.ini 
+   84  ansible-playbook -i inventory.ini ping.yml
+   85  sudo apt update
+   86  sudo apt install software-properties-common
+   87  sudo add-apt-repository --yes --update ppa:ansible/ansible
+   88  sudo apt install ansible
+   89  ansible --version
+   90  ansible-playbook -i inventory.ini ping.yml
+   91  ls
+   92  cat inventory.ini 
+   93  ls ../terraform/
+   94  cd ../terraform/
+   95  vi generate_inventory.sh 
+   96  ./generate_inventory.sh 
+   97  vi generate_inventory.sh 
+   98  ./generate_inventory.sh 
+   99  cd ../ansible/
+  100  ls
+  101  cat inventory.ini 
+  102  ansible-playbook -i inventory.ini ping.yml
+  103  [200~ubuntu@ip-172-31-42-49:~/ansible$ ansible-playbook -i inventory.ini ping.yml
+  104  PLAY [Test EC2 connection] ***************************************************************************************************************************
+  105  TASK [Ping EC2] **************************************************************************************************************************************
+  106  The authenticity of host '16.171.16.104 (16.171.16.104)' can't be established.
+ED25519 key fingerprint is SHA256:w+dwjoAmOpj/Pfoc7BNUMdtJ1VcsDvBVrX6k6+cvN1s.
+This key is not known by any other names.
+The authenticity of host '16.171.196.39 (16.171.196.39)' can't be established.
+  107  ED25519 key fingerprint is SHA256:gG5GE/YyU6NcwTxMc8DE78SXmvxtnD5NVyKH90SXHLk.
+  108  This key is not known by any other names.
+  109  Are you sure you want to continue connecting (yes/no/[fingerprint])? fatal: [16.171.9.210]: UNREACHABLE! => {"changed": false, "msg": "Failed to connect to the host via ssh: ec2-user@16.171.9.210: Permission denied (publickey).", "unreachable": true}~ubuntu@ip-172-31-42-49:~/ansible$ ansible-playbook -i inventory.ini ping.yml
+  110  PLAY [Test EC2 connection] ***************************************************************************************************************************
+  111  TASK [Ping EC2] **************************************************************************************************************************************
+  112  The authenticity of host '16.171.16.104 (16.171.16.104)' can't be established.
+ED25519 key fingerprint is SHA256:w+dwjoAmOpj/Pfoc7BNUMdtJ1VcsDvBVrX6k6+cvN1s.
+This key is not known by any other names.
+The authenticity of host '16.171.196.39 (16.171.196.39)' can't be established.
+  113  ED25519 key fingerprint is SHA256:gG5GE/YyU6NcwTxMc8DE78SXmvxtnD5NVyKH90SXHLk.
+  114  This key is not known by any other names.
+  115  Are you sure you want to continue connecting (yes/no/[fingerprint])? fatal: [16.171.9.210]: UNREACHABLE! => {"changed": false, "msg": "Failed to connect to the host via ssh: ec2-user@16.171.9.210: Permission denied (publickey).", "unreachable": true}
+  116  clear
+  117  ssh -i ../terraform/id_rsa ubuntu@16.171.9.210
+  118  clear
+  119  cat inventory.ini 
+  120  cd ../terraform/
+  121  ls
+  122  vi generate_inventory.sh 
+  123  cd ../ansible/
+  124  ansible-playbook -i inventory.ini ping.yml
+  125  ../terraform/generate_inventory.sh 
+  126  ansible-playbook -i inventory.ini ping.yml
+  127  ansible-playbook -i inventory.ini run_python.yml
+  128  ls
+  129  vi run_python.yml 
+  130  ansible-playbook -i inventory.ini run_python.yml
+  131  ansible-playbook -i inventory.ini run_python.yml -v
+  132  cat ../script.py 
+  133  vi run_python.yml 
+  134  ansible-playbook -i inventory.ini run_python.yml -v
+  135  cd ../
+  136  history
+  137  history >> commands.txt

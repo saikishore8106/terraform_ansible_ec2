@@ -1,0 +1,18 @@
+- name: Upload and run Python script
+  hosts: ec2_instances
+  gather_facts: false
+
+  tasks:
+    - name: Upload Python script
+      copy:
+        src: ../script.py
+        dest: /home/ubuntu/script.py
+        mode: '0755'
+
+    - name: Run the script
+      command: python3 /home/ubuntu/script.py
+      register: result
+
+    - name: Show script output
+      debug:
+        var: result.stdout
