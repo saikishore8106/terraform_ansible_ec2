@@ -1,1 +1,7 @@
 
+- name: Test EC2 connection
+  hosts: ec2_instances
+  gather_facts: no
+  tasks:
+    - name: Ping EC2
+      ping:
